@@ -3,7 +3,7 @@ import styled from "styled-components";
 const BoardComp = styled.div`
   width: 600px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 30px;
   .title {
     text-align: center;
     height: 50px;

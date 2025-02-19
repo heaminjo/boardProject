@@ -12,8 +12,8 @@ export default function Post() {
     <PostComp>
       <h1>게시글 상세 조회 입니다.</h1>
       <div className="textContainer">
-        <h2>제목 : {post.title}</h2>
-        <p>내용 : {post.content}</p>
+        <h2>제목 : {post != null ? post.title : "없는 게시물 입니다."}</h2>
+        <p>내용 : {post != null ? post.content : "-------------------"}</p>
       </div>
     </PostComp>
   );
