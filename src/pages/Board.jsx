@@ -13,19 +13,20 @@ const data = [
 ];
 
 export default function Board() {
-  const [list, setList] = useState(data); //board 리스트
-
+  const [list, setList] = useState(data); //원본 board 리스트
+  const [filterList, setFilterList] = useState([]); //검색 board 리스트
   const [search, setSearch] = useState("");
 
   //게시글 검색
   const boardSearch = () => {
     //검색어를 채웠을 경우
     if (search !== "") {
-      const newList = list.filter(({ content }) =>
-        content.toLowerCase().includes(search.toLowerCase())
+      setFilterList(
+        list.filter(({ content }) =>
+          content.toLowerCase().includes(search.toLowerCase())
+        )
       );
-      setList(newList);
-    } else setList(data);
+    } else setFilterList([]);
   };
 
   return (
@@ -36,7 +37,11 @@ export default function Board() {
 
       {/* 리스트 출력 컴포넌트 */}
       <div className="boardList">
-        <BoardList list={list} />
+        {filterList.length == 0 ? (
+          <BoardList list={list} />
+        ) : (
+          <BoardList list={filterList} />
+        )}
       </div>
 
       {/* new 기능 추가 */}
